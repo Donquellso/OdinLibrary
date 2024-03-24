@@ -1,0 +1,176 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lightyellow;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+#tops{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    box-shadow: 1px 1px 6px black;
+}
+#bottom{
+    height: 700px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,1fr);
+    place-items: center;
+    gap: 50px;
+    margin-top: 50px;
+  
+}
+#add-btn{
+    width: 240px;
+height: 60px;
+font-size: 26px;
+background-color:rgb(43, 40, 40);
+color: lightgray;
+border: none;
+border-radius: 30px;
+}
+#close-btn, #confirm-btn{
+background-color:rgb(43, 40, 40);
+color: lightgray;
+border: none;
+border-radius: 20px;
+width: 170px;
+height: 40px;
+font-size: 20px;
+margin-top: 10px;
+}
+#add-btn:hover, #close-btn:hover, #confirm-btn:hover{
+    color: rgb(248, 240, 240);
+    background-color: rgb(115, 112, 112);
+    border: 2px solid black;
+}
+input{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#modal::backdrop{
+    background: rgb(0 0 0 / .3);
+}
+#modal{
+    background-color: gray;
+    padding: 50px;
+    padding-top: 40px;
+    width: 360px;
+    height: 300px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    border: none;
+}
+#partit{
+    font-weight: bolder;
+    font-size: 30px;
+}
+#bottom>div{
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.card{
+    background-color: gray;
+    border-radius: 9px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+   text-align: center;
+}
+.read{
+    background-color:green;
+color: lightgray;
+border: none;
+width: 120px;
+height: 25px;
+border-radius: 4px;
+}
+
+.read:hover{
+    color: rgb(248, 240, 240);
+    background-color: rgb(6, 73, 19);
+}
+.unread{
+    background-color:rgb(143, 27, 21);
+color: lightgray;
+border: none;
+width: 120px;
+height: 25px;
+border-radius: 4px;
+}
+
+.unread:hover{
+    color: rgb(248, 240, 240);
+    background-color: rgb(72, 37, 37);
+}
+.card>.bottom>button:nth-child(2){
+    background-color:rgb(187, 24, 24);
+color: lightgray;
+border: none;
+width: 120px;
+height: 25px;
+border-radius: 4px;
+}
+.card>.bottom>button:nth-child(2):hover{
+    background-color:rgb(110, 14, 14);
+color: lightgray;
+border: none;
+width: 120px;
+height: 25px;
+border-radius: 4px;
+}
+form>p{
+    font-size: 25px;
+    margin: 10px;
+}
+input{
+    width: 210px;
+    height: 22px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+input[type="checkbox"]{
+    width: 25px;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.right{
+    color: lightgray;
+    font-size: 12px;
+}
+.left{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start;
+}
+
+.left>h3{
+    font-size: 28px;
+    margin-block-start: 10px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+
+}
+.left>p{
+    margin-block-start: 2px;
+    margin-block-end: 36px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.right>p{
+    margin-block-start: 25px;
+    margin-block-end: 0px;
+}
+.bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div id="tops">
+        <button id="add-btn">ADD BOOK</button>
+    </div>
+    <dialog id="modal">
+        <form id="forms">
+        <p id="partit">Add new book</p>
+     <p><input type="text" id="title" required placeholder="Title"></p>
+      <p><input type="text" id="author" required placeholder="Author">  </p>
+      <p><input type="number" id="page" required placeholder="Pages"></p>
+     <p><label for="read"> Is it read?</label> &nbsp; <input type="checkbox" id="read">  </p>
+     <button id="confirm-btn" >Confirm</button>
+     <button id="close-btn">Cancel</button>
+    </form>
+    </dialog>
+    <div id="bottom">
+        <!-- <div id="left"></div>
+        <div id="right"></div> -->
+    </div>
+    <script>
+        //ZMIENNE
+        const myLibrary =[
+            {
+            title:'jadom',
+            author:'kamil',
+            number:21,
+            isread:true,
+            }
+        ];
+        const openbtn = document.getElementById('add-btn');
+        const form = document.querySelector('#forms');
+        const closebtn = document.getElementById('close-btn');
+        const container = document.querySelector('#bottom');
+        const modal = document.querySelector('#modal');
+        // const left = document.getElementById('left');
+        // const right = document.getElementById('right');
+        /////////////////
+        //PRZYCISKI
+        openbtn.addEventListener('click',()=>{
+            form.title.value='';
+            form.author.value='';
+            form.page.value='';
+           read.checked=false;
+            modal.showModal();
+        });
+       form.addEventListener('submit',()=>{
+            event.preventDefault();
+            const newTitle = form.title.value;
+            const newAuthor = form.author.value;
+            const newNums = form.page.value;
+            const newIsread = read.checked ? true : false;
+            Book.addBookToLibrary(newTitle, newAuthor, newNums, newIsread);
+           modal.close();
+        });
+        closebtn.addEventListener('click',()=>{
+            modal.close();
+        });
+        ///////////////
+        //KONSTRUKTOR OBIEKTU KSIAZKI
+        
+        class Book{ 
+            constructor(title, author, number, isread) {
+            this.title = title;
+            this.author = author;
+            this.number = number;
+            this.isread = isread;
+        }
+        //////////
+        //FUNKCJA TWORZACA KSIAZKE ZA POMOCA KONSTRUKTORA I WRZUCAJACA JĄ DO TABLICY
+        static addBookToLibrary(newTitle, newAuthor, newNums, newIsread) {
+            const newBook = new Book(newTitle, newAuthor, newNums, newIsread);
+            console.log(newBook);
+            myLibrary.push(newBook);
+            displayArr();
+        }
+    }
+       //////////////
+       //WYSWIETLANIE KAFELEK
+       function displayArr(){
+        container.innerHTML='';
+        for(let library of myLibrary){
+            const div = document.createElement('div');
+            const top = document.createElement('div');
+            const bottom = document.createElement('div');
+            const left = document.createElement('div');
+            const right = document.createElement('div');
+            top.classList.add('top');
+            bottom.classList.add('bottom');
+            left.classList.add('left');
+            right.classList.add('right');
+            div.style.width='300px';
+            div.style.height='200px';
+            div.style.border='2px solid black';
+            div.classList.add('card');
+            div.style.padding='20px';
+            const h3 = document.createElement('h3');
+            h3.textContent=library.title;
+            const par = document.createElement('p');
+            par.textContent='By: ' + library.author;
+            const par2 = document.createElement('p');
+            par2.textContent='Pages: ' + library.number;
+            const btnread = document.createElement('button');
+            if(library.isread===true){
+                btnread.textContent='Read';
+            } else  btnread.textContent='Unread';
+            if(library.isread===true){
+            btnread.classList.add('read');
+            } else  btnread.classList.add('unread');
+            const remov = document.createElement('button');
+            remov.textContent='Remove'
+            ////////
+            //event listener do usuniecia danego kafelka
+            remov.addEventListener('click',()=>{
+                const indexToRemove = myLibrary.indexOf(library);
+                myLibrary.splice(indexToRemove,1);
+                displayArr();
+            })
+            ////////
+            //event listener do zmiany przeczytania
+            btnread.addEventListener('click', () => {
+            library.isread = !library.isread; 
+            displayArr(); 
+});
+            /////////////
+            container.appendChild(div);
+            div.appendChild(top);
+            div.appendChild(bottom);
+            top.appendChild(left);
+            top.appendChild(right);
+            left.appendChild(h3);
+            left.appendChild(par);
+            right.appendChild(par2);
+            bottom.appendChild(btnread);
+            bottom.appendChild(remov);
+        }
+       }
+       ////////////////////////
+       displayArr();
+    </script>
+</body>
+</html>
